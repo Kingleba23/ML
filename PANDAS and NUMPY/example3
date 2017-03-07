@@ -1,0 +1,17 @@
+%matplotlib inline
+import pandas as pd
+
+import pylab as plt
+plt.style.use('ggplot')  # Красивые графики
+plt.rcParams['figure.figsize'] = (15, 5)  # Размер картинок
+
+fixed_df = pd.read_csv('D:\ML/chelsea.csv',  # Это то, куда вы скачали файл
+                       sep=';', encoding='latin1',
+                       parse_dates=['date'], dayfirst=True,
+                       index_col='date')
+ fixed_df.plot()
+ fixed_df[['possesion','goal1']]
+count=fixed_df['weekday'].value_counts()
+count.plot(kind='bar')
+fixed_df[['goal1','weekday']]
+fixed_df['possesion'].min()
