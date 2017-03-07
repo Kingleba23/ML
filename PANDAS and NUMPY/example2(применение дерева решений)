@@ -1,0 +1,20 @@
+%pylab inline
+import numpy as np
+import pylab as plt
+plt.rcParams['figure.figsize'] = (10.0, 8.0)
+
+# первый класс
+train_data = np.random.normal(size=(100, 2))
+train_labels = np.zeros(100)
+
+# добавляем второй класс
+train_data = np.r_[train_data, np.random.normal(size=(100, 2), loc=2)]
+train_labels = np.r_[train_labels, np.ones(100)]
+
+def get_grid(data):
+    x_min, x_max = data[:, 0].min() - 1, data[:, 0].max() + 1
+    y_min, y_max = data[:, 1].min() - 1, data[:, 1].max() + 1
+    return np.meshgrid(np.arange(x_min, x_max, 0.01),
+                         np.arange(y_min, y_max, 0.01))
+                         
+  plt.scatter(train_data[:, 0], train_data[:, 1], c=train_labels, s=100, cmap='autumn')
